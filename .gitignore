@@ -1,0 +1,16 @@
+# Ignore Java build files
+target/
+*.class
+*.jar
+
+# Ignore IDE files
+.idea/
+*.iml
+.vscode/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore Data files (Không up file CSV nặng lên Git)
+data/warehouse/*.csv
