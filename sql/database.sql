@@ -24,10 +24,11 @@ CREATE TABLE job_status (
     last_run DATETIME
 );
 
+USE Control;
 CREATE TABLE source_config (
     config_key VARCHAR(100) PRIMARY KEY,
     config_value VARCHAR(500) NOT NULL,
-    description TEXT,
+    description TEXT
 );
 
 -- DB Staging
