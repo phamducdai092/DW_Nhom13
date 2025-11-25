@@ -10,6 +10,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.sql.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -114,6 +115,7 @@ public class Main {
             // 14. Mở khóa Job (Luôn chạy)
             if (conn != null) {
                 lockJob(conn, false); // Set is_running = 0
+                updateLastRun(conn);
                 try {
                     conn.close();
                 } catch (SQLException e) {
@@ -131,6 +133,16 @@ public class Main {
             if (rs.next()) return rs.getBoolean("is_running");
         }
         return false;
+    }
+
+    private static void updateLastRun(Connection conn) {
+        String sql = "UPDATE job_status SET last_run = ? WHERE Job_name = 'CrawlData'";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setDate(1, java.sql.Date.valueOf(LocalDate.now()));
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void lockJob(Connection conn, boolean is_running) {
