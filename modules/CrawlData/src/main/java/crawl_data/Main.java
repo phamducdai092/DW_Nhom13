@@ -33,7 +33,8 @@ public class Main {
             System.out.println("--> Đang kết nối DB Control...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
-            // 2. Check & Lock Job
+            // 2. Check
+            // 3. Lock Job
             if (isJobRunning(conn)) {
                 log(conn, "WARN", "Job CrawlData đang chạy, bỏ qua lần này.");
                 return;
@@ -89,6 +90,7 @@ public class Main {
                         log(conn, "INFO", "Ghi file thành công: " + fileName);
                     } catch (Exception e) {
                         // Nhánh Failed của bước 9
+                        // 11. Log ERROR
                         e.printStackTrace();
                         log(conn, "ERROR", "Lỗi ghi file CSV: " + e.getMessage());
                         updateConfigStatus(conn, configId, "ERROR");
@@ -96,6 +98,7 @@ public class Main {
 
                 } else {
                     // Nhánh False của bước 7
+                    // 12. Log WARN
                     log(conn, "WARN", "Dữ liệu vùng " + zone + " cũ (" + apiTime + "), bỏ qua.");
                 }
             }
