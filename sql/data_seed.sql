@@ -15,3 +15,12 @@ INSERT INTO job_status (job_name, is_running, last_run) VALUES
 
 INSERT INTO log (job_name, log_level, message) VALUES
 ('System', 'INFO', 'Database initialized with seed data.');
+
+INSERT INTO Dim_Region(region_key, region_name) VALUES 
+(00, "Hồ Chí Minh"),
+(07, "Cần Thơ"),
+(11, "Hà Nội"),
+(13, "Đà Nẵng"),
+(14, "Tây Nguyên"),
+(21, "Đông Nam Bộ");
+

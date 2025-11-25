@@ -13,8 +13,8 @@
     <modules>
         <module>CrawlData</module>
         <module>Staging</module>
-        <module>Warehouse</module>
-        <module>DataMart</module>
+        <!-- <module>Warehouse</module> -->
+        <!-- <module>DataMart</module> -->
     </modules>
 
     <properties>

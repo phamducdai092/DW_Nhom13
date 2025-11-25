@@ -16,7 +16,7 @@ public class StagingDataMain {
     private static final String DB_STAGING_URL = "jdbc:mysql://localhost:3306/Staging?useUnicode=true&characterEncoding=UTF-8";
     private static final String USER = "root";
     private static final String PASS = "root";
-    private static final String JOB_NAME = "Staging_Data";
+    private static final String JOB_NAME = "StagingData";
 
 
     public static void main(String[] args) {
